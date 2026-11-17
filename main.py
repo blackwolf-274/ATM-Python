@@ -38,7 +38,7 @@ def main():
             username = input('username: ')
             try:
                 pin = int(input('pin: '))
-                balance = int(input('balance: TZS '))
+                balance = int(input('balance: USD '))
             except ValueError:
                 print('Pin and balance must be numbers!\n')
                 continue
@@ -99,13 +99,13 @@ def dashboard(username):
             showbalance(username)
         elif choice == 2:
             try:
-                amount = int(input('Enter amount: TZS '))
+                amount = int(input('Enter amount: USD '))
                 withdrawal(amount, username)
             except ValueError:
                 print('Invalid amount.\n')
         elif choice == 3:
             try:
-                amount = int(input('Enter amount: TZS '))
+                amount = int(input('Enter amount: USD '))
                 deposit(amount, username)
             except ValueError:
                 print('Invalid amount.\n')
@@ -119,8 +119,8 @@ def showbalance(username):
     users = load_users()
     if username in users:
         balance = users[username]['balance']
-        log_action(f'{username} checked balance: TZS {balance}')
-        print(f'Current Balance: TZS {balance}\n')
+        log_action(f'{username} checked balance: USD {balance}')
+        print(f'Current Balance: USD {balance}\n')
         return balance
 
 def deposit(amount, username):
@@ -132,8 +132,8 @@ def deposit(amount, username):
     if username in users:
         users[username]['balance'] += amount
         save_users(users)
-        log_action(f'{username} deposited TZS {amount}')
-        print(f'Successfully deposited TZS {amount}')
+        log_action(f'{username} deposited USD {amount}')
+        print(f'Successfully deposited USD {amount}')
         showbalance(username)
 
 def changePin(username):
@@ -170,8 +170,8 @@ def withdrawal(amount, username):
         if amount <= users[username]['balance']:
             users[username]['balance'] -= amount
             save_users(users)
-            log_action(f'{username} withdrew TZS {amount}')
-            print(f'Successfully withdrew TZS {amount}')
+            log_action(f'{username} withdrew USD {amount}')
+            print(f'Successfully withdrew USD {amount}')
             showbalance(username)
         else:
             print('Insufficient funds\n')
