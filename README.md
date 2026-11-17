@@ -1,4 +1,3 @@
 # ATM-Python
-usage:
-run
-python3 main.py
+Usage:
+run python3 main.py
